@@ -1,4 +1,4 @@
-# emilyshopcli3
+# EmilyShop_
 
 ## Project setup
 ```
