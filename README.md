@@ -1,4 +1,4 @@
-# EmilyShop_
+# EmilyShop_vuex
 
 ## Project setup
 ```
