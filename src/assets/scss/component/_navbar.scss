@@ -1,0 +1,88 @@
+/* layout 通用 navbar icon */
+.navbar {
+    position: fixed;
+    width: 100%;
+    background: transparent;
+    transition: all .25s ease all;
+    z-index: 999;
+    & .cart-badge {
+        top: 1px;
+        right: 4px;
+        background: $warning;
+    } 
+    & .nav-item .material-icons {
+        top: -4px;
+        left: 0px;
+    }
+    & .nav-item .cart-badge {
+        top: 1px;
+        right: -5px;
+    }
+    &-toggler {
+        border: 0px solid transparent;
+    }
+}
+.navbar .position-relative {
+    width: 40px;
+    height: 40px;
+}
+.nav-item {
+    background: $hgray;
+} 
+.navbar-light .navbar-nav .nav-link {
+    color: #fff;
+    border-bottom: 1px solid #fff;
+    &.active {
+        color:$white;
+    }
+    &.active .material-icons{
+        color:$white;
+    }
+}
+
+@include pad {
+    .nav-item {
+        background:  transparent;
+    } 
+    .navbar-light .navbar-nav .nav-link {
+        color: $white;
+        border-bottom: none;
+        &:hover, &:focus {
+            color:$warning;
+        }
+        &.active {
+            color:$white;
+        }
+    } 
+ }
+
+/* layout 通用 navbar icon */
+button:focus {
+    outline: 0px;
+}
+.toggler-bar {
+    display: block;
+    position: absolute;
+    width: 30px;
+    height: 5px;
+    background-color: $white;
+    border-radius: 10px;
+    transition: .2s;
+}
+.toggler-bar-top {
+    top: 5px;
+}
+.toggler-bar-middle {
+    top: 16px;
+}
+.toggler-bar-bottom {
+    top: 27px;
+}
+.toggler-bar-top-rotate {
+    top: 15px;
+    transform: rotate(45deg);
+}
+.toggler-bar-bottom-rotate {
+    top: 15px;
+    transform: rotate(-45deg);
+}

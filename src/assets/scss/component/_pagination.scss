@@ -1,0 +1,37 @@
+.page-link {
+    height: 42px;
+    width: 42px;
+    text-align: center;
+    color: $topic;
+    border: 1px solid $topic;
+    & .material-icons {
+        color:$topic;
+    }
+    &:hover {
+        background-color: $topic;
+        color:  $white;
+        transition: .7s;
+    }
+    &:hover .material-icons { 
+        color:$white;
+    }
+}
+.page-link:focus {
+    z-index: 3;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(145, 96, 0, 0.25);
+}
+.page-item:first-child .page-link {
+    border-top-left-radius: 0rem;
+    border-bottom-left-radius: 0rem;
+}
+.page-item:last-child .page-link {
+    border-top-right-radius: 0rem;
+    border-bottom-right-radius: 0rem;
+}
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: $topic;
+    border-color:$topic;
+}

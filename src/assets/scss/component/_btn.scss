@@ -1,0 +1,100 @@
+/* 首頁 banner scrollDown 效果*/
+.home-banner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  .home-banner::after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    content: '';
+    width: 100%;
+    height: 80%;
+  }
+  .demo a {
+    position: absolute;
+    bottom: -10px;
+    left: 5%;
+    z-index: 2;
+    display: inline-block;
+    transform: translate(0, -50%);
+    color: #fff;
+    font-weight: bolder;
+    font : normal 400 20px/1 'Josefin Sans', sans-serif;
+    letter-spacing: .1em;
+    text-decoration: none;
+    transition: opacity .3s;
+  }
+  .demo a:hover {
+    opacity: .7;
+  }
+  #scrollDown a {
+    padding-top: 60px;
+  }
+  #scrollDown a span {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 24px;
+    height: 24px;
+    margin-left: -12px;
+    border-left: 6px solid #fff;
+    border-bottom: 6px solid #fff;
+    transform: rotate(-45deg);
+    animation: sdb04 2s infinite;
+  }
+  @keyframes sdb04 {
+    0% {
+      transform: rotate(-45deg) translate(0, 0);
+    }
+    20% {
+      transform: rotate(-45deg) translate(-10px, 10px);
+    }
+    40% {
+      transform: rotate(-45deg) translate(0, 0);
+    }
+  }
+
+/* 首頁 btn */
+.btn-index {
+    padding: 0.89rem 1rem;
+    font-size: 28px;
+    border-radius: 50px;
+}
+.btn-plan {
+    color:#000;
+    background-color: transparent; 
+    border: 2px solid #000;
+    transition: all .8s;
+    &:focus, &.btn:hover  {
+        background-color:  #000;
+        border-color: $gray-400;
+        color: #fff;
+    }
+}
+
+/* 首頁 btn 訂閱email的按鈕圓角 */
+.rounded-left {
+    border-top-left-radius: 0.25rem !important;
+    border-bottom-left-radius: 0.25rem !important;
+}
+.rounded-right {
+    border-top-right-radius: 0.25rem !important;
+    border-bottom-right-radius: 0.25rem !important;
+}
+.subscribe .btn {
+  font-weight: bolder;
+  font-size: 22px;
+  padding: 0 16px;
+  border-radius: 0rem;
+}
+@include smobile {
+  .subscribe .btn {
+    padding: 0 23px;
+  }
+  .home-banner .demo a {
+    left: 50%;
+    bottom: 20px;
+  }
+}

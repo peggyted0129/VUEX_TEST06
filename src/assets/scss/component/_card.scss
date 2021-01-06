@@ -1,0 +1,39 @@
+/* 首頁 card */
+.sold {
+    & .card {
+        border: none;
+        background: none;
+    }
+    & .card-img-top {
+        max-width: 100%;
+    }
+    & .sold-out {
+        position: relative;
+    }
+    &-bg {
+        @include align-center;
+        max-width: 100%;
+        background: rgba(0, 0, 0, 0.3);
+    }
+}
+@include pad {
+    .sold .card-title {
+        font-size: 16px;
+    }
+}
+@include desktop {
+    .sold .card-title {
+        font-size: 20px;
+    }
+}
+@media (min-width: 1200px) {
+    .sold .card-title {
+        font-size: 24px;
+    }
+}
+
+/*-------- 後台 product card ------*/
+.card {
+    border: 0px solid rgba(0, 0, 0, 0.125);
+}
+

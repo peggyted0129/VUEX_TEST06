@@ -1,0 +1,61 @@
+@mixin hide-text {
+    text-indent: 101%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+@mixin position-center {  // 水平垂直置中
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+@mixin align-middle {   // 垂直置中
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+@mixin banner($url, $height) {
+    background-image: url($url);
+    height: $height;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+@mixin align-center {    // 水平垂直置中
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+@mixin nav-hover {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 20px;
+    width: 0%;
+    height: 2px;
+    background: $theme;
+    transition: all 1s;
+}
+@mixin desktop {
+    @media(min-width:992px){
+        @content
+    }
+}
+@mixin pad {
+    @media(min-width:768px){
+        @content
+    }
+}
+@mixin mobile {
+    @media(min-width:576px){
+        @content
+    }
+}
+@mixin smobile {
+    @media(min-width:375px){
+        @content
+    }
+}

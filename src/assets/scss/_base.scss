@@ -1,0 +1,40 @@
+html, body {
+	scroll-behavior: smooth;
+	font-family: 'Noto Sans TC', sans-serif;
+}
+/* 確保AOS套件在RWD不會出現X軸 */
+body {
+	overflow-x: hidden;
+}
+img {
+	display: block;   /* 去除圖片底下的2-3px空白 */
+	/*vertical-align: middle;  也是去除圖片底下的2-3px空白 */
+	max-width: 100%;  /* 使之貼其父元素，才不會有圖片過大情況發生 */
+	height: auto;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, p {
+	line-height: 1.5;
+	margin-bottom: 0;
+} 
+h1, h2, h3, h4, h5, h6 {
+	font-size: 900;
+} 
+a {
+	  display: block;
+	  transition:all 0.5s;
+	  &:hover {
+		text-decoration: none;
+	  }
+  }
+ul,ol,li{
+	list-style: none;
+	padding: 0;
+	margin-bottom: 0;
+}
+.table th, .table td {
+    padding: 0 0 0 0;
+	vertical-align: middle;
+}
+
+
