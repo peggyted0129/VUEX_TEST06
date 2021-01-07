@@ -13,21 +13,20 @@
           </div>
         </div>
         <!-- 產品列表 -->
-        <ui class="list-group text-center">
+        <ul class="list-group text-center mb-10">
           <li><a href="#" @click.prevent="searchText = ''" :class="{ 'active': searchText === ''}" class="list-group-item list-group-item-action h5">所有商品</a></li>
           <li><a href="#" @click.prevent="searchText = item" :class="{ 'active': item === searchText}" 
                 v-for="item in categories" :key="item" class="list-group-item list-group-item-action h5">{{ item }}</a></li>
-        </ui>
+        </ul>
       </div>
       <div class="col-9 mt-16">
-        <!-- Search bar -->
         <div class="row">
           <div class="col-4" v-for="item in filterData" :key="item.id" data-aos="fade-up">
-            <a class="product-card card border-0 mb-6">
-              <div class="card-img-top card-img position-relative" style="height:200px">
+            <div class="product-card card border-0 mb-6">
+              <a href="#" class="card-img-top card-img position-relative" style="height:200px" @click="openProductDetail(item.id)">
                 <img class="card-img-top card-img h-100 w-100" :src="item.imageUrl" alt="Card image cap">
-                <p class="list-hover h3 font-weight-bolder d-flex align-items-center justify-content-center">查看更多</p>
-              </div>
+                <p class="list-hover h4 font-weight-bolder d-flex align-items-center justify-content-center">點擊查看更多</p>
+              </a>
               <div class="card-body p-4">
                 <p class="badge badge-secondary mb-2">
                   {{ item.category }}
@@ -40,14 +39,17 @@
                 </div>
               </div>
               <div class="card-footer d-flex justify-content-between align-items-center pt-0 border-top-0 bg-white">
-                <a href="#" class="text-danger" @click="addtoCart(item.id)">
-                  <i class="fa fa-cart-plus fa-2x" aria-hidden="true"></i>
+                 <!-- 加入購物車 -->
+                <a href="#" class="text-danger" @click.prevent="addtoCart(item.id)">
+                  <i class="fa fa-cart-plus fa-2x"></i>
                 </a>
-                <a href="#" class="material-icons text-danger h1" @click="addtoCart(item.id)">
-                  favorite_border
+                <!-- 加入最愛 -->
+                <a href="#" class="text-danger" @click.prevent="addMyFavorite(item.id)">
+                  <i class="far fa-heart fa-2x" v-if="myFavorite.indexOf(item.id) === -1"></i>
+                  <i class="fas fa-heart fa-2x" v-else></i>
                 </a>
               </div>
-            </a>
+            </div>
           </div>
         </div>
       </div>
@@ -58,12 +60,12 @@
 
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
+
 export default {
   data() {
     return {
-     products: [],     
      searchText: '',
-     categories: [],
     };
   },
   computed: {
@@ -77,26 +79,20 @@ export default {
       }
       return this.products;
     },
+    ...mapGetters(['isLoading', 'products', 'categories', 'myFavorite']),
   },
   methods: {
-    getProducts(){
-        const vm = this;
-        const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/products/all`;
-        vm.$store.dispatch('updateLoading', true);
-        this.$http.get(api).then((response) => {
-            console.log('getProducts' ,response.data);
-            vm.products = response.data.products;
-            vm.getUnique();
-            vm.$store.dispatch('updateLoading', false);
-        });
+    ...mapActions(['getProducts']),
+    
+    addMyFavorite(id) {
+      this.$store.dispatch('addMyFavorite', id)
     },
-    getUnique(){
+    addtoCart(id, productQty = 1){
+      this.$store.dispatch('addtoCart', { id, productQty });
+    },
+    openProductDetail(id) {
       const vm = this;
-      const categories = new Set();
-      vm.products.forEach((item) => {
-        categories.add(item.category);
-      });
-      vm.categories = Array.from(categories);
+      vm.$router.push(`/product/${id}`);
     },
   },
   created() {
@@ -136,6 +132,7 @@ export default {
 }
 .product-card {
   box-shadow: 2px 2px 5px hsla(0,0%,39.2%,.16);
+  transition: .8s;
   &:hover .list-hover {
     background: rgba(0, 0, 0, .5);
     color: $white;
@@ -149,7 +146,6 @@ export default {
   @include align-center;
   background: transparent;
   color: transparent;
-  transition: .8s;
 }
 
 </style>

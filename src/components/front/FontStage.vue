@@ -1,6 +1,6 @@
 <template>
 <div>
-        
+  <loading :active.sync="isLoading"></loading>      
   <NavBar></NavBar>  <!-- NavBar -->
 
   <router-view />    <!-- Content -->
@@ -101,6 +101,11 @@ export default {
   data: function(){
     return {     
     };
+  },
+  computed: {
+    isLoading() {
+      return this.$store.state.isLoading;
+    }
   },
   methods: {
     scrollToTop() {

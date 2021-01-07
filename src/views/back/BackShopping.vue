@@ -183,11 +183,11 @@
 
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   data() {
     return {     
-      products: [],
       product: {},
       status: {  // loadingItem判斷畫面上哪個元素正在讀取中，存放的值是產品的id
         loadingItem: '',
@@ -209,21 +209,11 @@ export default {
     };
   },
   computed: {
-    isLoading() {
-      return this.$store.state.status.isLoading;
-    }
+    ...mapGetters(['isLoading', 'products']),
   },
   methods: {
-    getProducts(){
-        const vm = this;
-        const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/products/all`;
-        vm.$store.dispatch('updateLoading', true);
-        this.$http.get(api).then((response) => {
-            console.log('getProducts' ,response.data);
-            vm.products = response.data.products;
-            vm.$store.dispatch('updateLoading', false);
-        });
-    },
+    ...mapActions(['getProducts']),
+    
     getProduct(id){
         const vm = this;
         const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/product/${id}`;

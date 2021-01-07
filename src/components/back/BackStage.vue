@@ -28,7 +28,7 @@ export default {
   },
   computed: {
     isLoading() {
-      return this.$store.state.status.isLoading;
+      return this.$store.state.isLoading;
     }
   },
   created(){

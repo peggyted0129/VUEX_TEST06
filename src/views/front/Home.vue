@@ -2,12 +2,11 @@
   <div class="home">
     <div class="home-banner" style="height:100vh">
       <div class="container h-100 d-flex flex-column align-items-center justify-content-center">
-        <div class="home-banner-text px-md-10 px-4 py-4" data-aos="fade-up" data-aos-delay="800">
-          <h2 class="h5 text-title font-weight-bolder text-center mb-5">幸 福 甜 點</h2>
-          <p class="text-piece text-center lh-1 mb-5">Love &nbsp;|&nbsp;  Gift  &nbsp;|&nbsp;  Nature  &nbsp;|&nbsp;  Dream</p>
-          <p class="text-natural h6 lh-1 mb-5">致，健康樂活的人們!<br>那種對純手工製成、完美保留食材純淨原味的感動，融化著崇尚純淨自然的心。<br>於是開啟了甜點的逐夢旅程。</p>
-          <p class="text-since lh-1 mb-0 text-right">Since 2002</p>
-        </div>
+        <ul class="home-banner-text px-md-10 px-4 py-4" data-aos="fade-up" data-aos-delay="800">
+          <li class="text-piece text-center lh-1 mb-5">Love &nbsp;|&nbsp;  Gift  &nbsp;|&nbsp;  Nature  &nbsp;|&nbsp;  Dream</li>
+          <li class="text-natural h6 lh-1 mb-5">致，健康樂活的人們!<br>堅持對純手工製成、保留食材純淨原味的感動，<br>咬一口，入口即化~<br>每口都是幸福滋味!</li>
+          <li class="text-since lh-1 mb-0 text-right">Since 2002</li>
+        </ul>
         <div id="scrollDown" class="demo">
           <a href="#tasty"><span></span>Scroll</a>
         </div>
