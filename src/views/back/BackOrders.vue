@@ -38,7 +38,7 @@
         </tbody>
     </table>
 
-    <Pagination :pages="pagination" @emitPages="getOrders"></Pagination>
+    <Pagination :pages="pagination" @emitPages="getOrdersA"></Pagination>
 
      <!-- Order modal -->
     <div class="modal fade" tabindex="-1" role="dialog" id="orderModal" data-backdrop="static">
@@ -120,7 +120,7 @@ export default {
     }
   },
   methods: {
-    getOrders(currentPage = 1) {
+    getOrdersA(currentPage = 1) {
       const vm = this;
       const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/orders?page=${currentPage}`;
       vm.$store.dispatch('updateLoading', true);
@@ -145,13 +145,13 @@ export default {
       this.$http.put(url, order).then((response) => {
         console.log(response.data);
         $('#orderModal').modal('hide');
-        vm.getOrders();
+        vm.getOrdersA();
         vm.$store.dispatch('updateLoading', false);
       });
     }
   },
   created() {
-    this.getOrders();
+    this.getOrdersA();
   },
 };
 </script>

@@ -22,11 +22,9 @@
                 </div>
                 <div class="card-footer d-flex">
                     <button type="button" class="btn btn-outline-secondary btn-sm" @click="getProduct(item.id)">
-                      <i class="fas fa-spinner fa-spin" v-if="status.loadingItem === item.id"></i>
                       查看更多
                     </button>
                     <button type="button" class="btn btn-outline-danger btn-sm ml-auto" @click="addtoCart(item.id, productQty=1)">
-                      <i class="fas fa-spinner fa-spin" v-if="status.loadingItem === item.id"></i>
                       加到購物車
                     </button>
                 </div>
@@ -170,8 +168,7 @@
               小計 <strong>{{ productQty * product.price }}</strong> 元
             </div>
             <button type="button" class="btn btn-warning" :disabled="productQty === 0"
-              @click="addtoCart(product.id, productQty)">
-              <i class="fas fa-spinner fa-spin" v-if="product.id === status.loadingItem"></i>
+                    @click="addtoCart(product.id, productQty)">
               加到購物車
             </button>
           </div>
@@ -188,14 +185,7 @@ import { mapGetters, mapActions } from 'vuex';
 export default {
   data() {
     return {     
-      product: {},
-      status: {  // loadingItem判斷畫面上哪個元素正在讀取中，存放的值是產品的id
-        loadingItem: '',
-      },
       productQty: 0,
-      cart: {
-        carts: {}
-      },
       coupon_code: '',
       form: {
         user: {
@@ -209,69 +199,19 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['isLoading', 'products']),
+    ...mapGetters(['isLoading', 'products', 'product']),
+    ...mapGetters('cartsModules', ['cart']),
   },
   methods: {
-    ...mapActions(['getProducts']),
-    
-    getProduct(id){
-        const vm = this;
-        const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/product/${id}`;
-        vm.status.loadingItem = id;
-        this.$http.get(api).then((response) => {
-        console.log('getProduct' ,response.data);
-        vm.product = response.data.product;
-        $('#productModal').modal('show');
-        vm.status.loadingItem = '';
-        });
-    },
+    ...mapActions(['getProducts', 'getProduct', 'addCouponCode']),
+    ...mapActions('cartsModules', ['getCart', 'delCart']),
+
+   
     addtoCart(id, productQty = 1){
-        const vm = this;
-        const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/cart`;
-        vm.status.loadingItem = id;
-        const cart = {
-            product_id: id,
-            qty: productQty,
-        };
-        this.$http.post(api, { data: cart }).then((response) => {
-        console.log(response.data);
-        vm.status.loadingItem = '';
-        vm.getCart();
-        $('#productModal').modal('hide');
-        });
-    },
-    getCart(){
-        const vm = this;
-        const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/cart`;
-        vm.$store.dispatch('updateLoading', true);
-        this.$http.get(api).then((response) => {
-            console.log('getCart: ',response.data);
-            vm.cart = response.data.data;
-            vm.$store.dispatch('updateLoading', false);
-        });
-    },
-    delCart(id){
-        const vm = this;
-        const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/cart/${id}`;
-        vm.$store.dispatch('updateLoading', true);
-        this.$http.delete(api).then((response) => {
-            this.$bus.$emit('message:push', response.data.message, 'danger');
-            vm.getCart();
-            vm.$store.dispatch('updateLoading', false);
-        });
+      this.$store.dispatch('cartsModules/addtoCart',{id, productQty});
     },
     addCouponCode(){
-      const vm = this;
-      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/coupon`;
-      const coupon = {
-          code: vm.coupon_code,
-      };
-      vm.$store.dispatch('updateLoading', true);
-      this.$http.post(api, {data: coupon} ).then((response) => {
-          console.log('coupon: ',response.data);
-          vm.getCart();
-          vm.$store.dispatch('updateLoading', false);
-      });
+      this.$store.dispatch('addCouponCode',this.coupon_code);
     },
     createOrder(){
       const vm = this;

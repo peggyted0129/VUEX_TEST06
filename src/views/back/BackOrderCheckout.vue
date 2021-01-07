@@ -58,48 +58,29 @@
 
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
+
 export default {
   data() {
     return {    
         orderId: '',
-        order: {
-            user: {},
-        },
     }
   },
   computed: {
-    isLoading() {
-      return this.$store.state.status.isLoading;
-    }
+    ...mapGetters(['isLoading', 'order']),
   },
   methods: {
     getOrder(){
-        const vm = this;
-        const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/order/${vm.orderId}`;
-        vm.$store.dispatch('updateLoading', true);
-        this.$http.get(api).then((response) => {
-            console.log('getOrder', response.data);
-            vm.order = response.data.order;
-            vm.$store.dispatch('updateLoading', false);
-        });
+      this.$store.dispatch('getOrder', this.orderId);
     },
     payOrder(){
-        const vm = this;
-        const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/pay/${vm.orderId}`;
-        vm.$store.dispatch('updateLoading', true);
-        this.$http.post(api).then((response) => {
-            console.log('payOrder', response.data);
-            if (response.data.success) {
-                vm.getOrder();
-            }
-            vm.$store.dispatch('updateLoading', false);
-        });
+      this.$store.dispatch('payOrder', this.orderId);
     }
   },
   created(){
-      this.orderId = this.$route.params.orderId;
-      console.log(this.orderId);
-      this.getOrder();
+    this.orderId = this.$route.params.orderId;
+    console.log(this.orderId);
+    this.getOrder();
   }
 }
 </script>

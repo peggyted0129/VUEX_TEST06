@@ -33,7 +33,7 @@
       </tbody>
     </table>
 
-    <Pagination :pages="pagination" @emitPages="getProducts"></Pagination>
+    <Pagination :pages="pagination" @emitPages="getProductsA"></Pagination>
 
     <!-- Modal -->
     <div class="modal fade" id="productModal" tabindex="-1" role="dialog"
@@ -199,7 +199,7 @@ export default {
     };
   },
   methods: {
-    getProducts(page = 1){
+    getProductsA(page = 1){
       const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/products?page=${page}`;
       const vm = this;
       vm.$store.dispatch('updateLoading', true);
@@ -234,11 +234,11 @@ export default {
         vm.$store.dispatch('updateLoading', false);
         if (response.data.success){
           $('#productModal').modal('hide');
-          vm.getProducts();
+          vm.getProductsA();
           this.$bus.$emit('message:push', response.data.message, 'info');
         }else {
           $('#productModal').modal('hide');
-          vm.getProducts();
+          vm.getProductsA();
           console.log('新增失敗');
           this.$bus.$emit('message:push', '新增產品失敗', 'danger');
         }
@@ -280,12 +280,12 @@ export default {
         this.$bus.$emit('message:push', response.data.message, 'danger');
         $('#delProductModal').modal('hide');
         vm.$store.dispatch('updateLoading', false);
-        vm.getProducts();
+        vm.getProductsA();
       });
     },
   },
   created(){
-    this.getProducts();
+    this.getProductsA();
   }
 }
 

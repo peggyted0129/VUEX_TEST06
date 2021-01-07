@@ -71,36 +71,27 @@ export default {
   data() {
     return {     
       productId: '',
-      product: {},
       productQty: 0,
     };
   },
   computed: {
-    ...mapGetters(['isLoading', 'myFavorite']),
+    ...mapGetters(['isLoading', 'myFavorite', 'product']),
   },
   methods: {
-    getProduct(id){
-      const vm = this;
-      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/product/${vm.productId}`;
-      vm.$store.dispatch('updateLoading', true);
-      this.$http.get(api).then((response) => {
-        console.log('getProduct' ,response.data);
-        vm.product = response.data.product;
-        vm.$store.dispatch('updateLoading', false);
-      });
-    },
-    addMyFavorite(id) {
-      this.$store.dispatch('addMyFavorite', id)
+    ...mapActions(['addMyFavorite', 'getProduct']),
+
+    addtoCart(id, productQty =1 ){
+      this.$store.dispatch('cartsModules/addtoCart',{id, productQty});
     },
     toProducts(){
       const vm = this;
-      vm.$router.push(`/products`);
+      vm.$router.push('/products');
     }
   },
   created(){
     this.productId = this.$route.params.id;
     console.log(this.productId);
-    this.getProduct();
+    this.getProduct(this.productId);
   }
 }
 
@@ -117,13 +108,7 @@ export default {
   height: auto;
   width: 100%;
 }
-.product-button {
-  width: 60%;
-}
 @include pad {
-  .product-button {
-    width: 70%;
-  }
   .product-title {
     font-size: 26px;
   }
@@ -134,9 +119,6 @@ export default {
   }
   .product-title {
     font-size: 32px;
-  }
-  .product-button {
-    width: 50%;
   }
 }
 </style>
