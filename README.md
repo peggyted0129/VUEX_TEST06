@@ -1,4 +1,4 @@
-# emilyshopcli3
+# EmilyShop_vuex
 
 ## Project setup
 ```
