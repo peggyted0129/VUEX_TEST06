@@ -2,6 +2,7 @@
 <div>
   <loading :active.sync="isLoading"></loading>      
   <NavBar></NavBar>  <!-- NavBar -->
+  <Alert />
 
   <router-view />    <!-- Content -->
 
@@ -62,7 +63,7 @@
                         <span class="material-icons h2 text-danger">delete_forever</span>
                       </div>
                     </th>
-                    <td class="pb-0"><span>Lorem ipsum dolor sit, amet </span></td>
+                    <td class="pb-0"><span>sdfgfhgfgddv</span></td>
                     <td class="text-left">100</td>
                     <td class="text-right">20000</td>
                   </tr>
@@ -93,21 +94,24 @@
 
 <script>
 import NavBar from '@/components/front/NavBar.vue';
+import Alert from '@/components/AlertMessage.vue';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
  components: {
       NavBar,
+      Alert,
   },
   data: function(){
     return {     
     };
   },
   computed: {
-    isLoading() {
-      return this.$store.state.isLoading;
-    }
+    ...mapGetters(['isLoading']),
+
   },
   methods: {
+    
     scrollToTop() {
       window.scrollTo(0, 0);
     },

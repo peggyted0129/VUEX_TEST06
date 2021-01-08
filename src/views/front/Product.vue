@@ -6,7 +6,7 @@
         <!-- 麵包屑 -->
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#" class="text-topic" @click="toProducts">所有商品</a></li>
+            <li class="breadcrumb-item"><router-link to="/products" class="text-topic">所有商品</router-link></li>
             <li class="breadcrumb-item active" aria-current="page">{{ product.title }}</li>
           </ol>
         </nav>
@@ -75,18 +75,14 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['isLoading', 'myFavorite', 'product']),
+    ...mapGetters(['isLoading', 'product' ,'myFavorite']),
   },
   methods: {
-    ...mapActions(['addMyFavorite', 'getProduct']),
-
+    ...mapActions(['getProduct', 'addMyFavorite']),
+   
     addtoCart(id, productQty =1 ){
       this.$store.dispatch('cartsModules/addtoCart',{id, productQty});
     },
-    toProducts(){
-      const vm = this;
-      vm.$router.push('/products');
-    }
   },
   created(){
     this.productId = this.$route.params.id;

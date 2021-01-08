@@ -1,4 +1,5 @@
 import axios from 'axios';
+import alertModules from './alertMessage';
 
 export default {
     namespaced: true,
@@ -18,6 +19,7 @@ export default {
             axios.post(api, { data: cart }).then((response) => {
               console.log('加入購物車:', response.data);
               context.dispatch('getCart');
+              context.dispatch('alertModules/updateMessage', { message: `${response.data.message}`, status: 'info' });
               context.commit('LOADING', false, { root: true });
               $('#productModal').modal('hide');
             });
@@ -35,7 +37,7 @@ export default {
             const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/cart/${id}`;
             context.commit('LOADING', true, { root: true });
             axios.delete(api).then((response) => {
-                // this.$bus.$emit('message:push', response.data.message, 'danger');
+                context.dispatch('alertModules/updateMessage', { message: `${response.data.message}`, status: 'danger' });
                 context.dispatch('getCart');
                 context.commit('LOADING', false, { root: true });
                 console.log('刪除購物車項目', response);
@@ -50,5 +52,8 @@ export default {
     getters: {
         cart: (state) => state.cart,
        
+    },
+    modules: {
+        alertModules,
     },
 }

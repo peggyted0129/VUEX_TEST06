@@ -8,77 +8,81 @@
           <li class="text-since lh-1 mb-0 text-right">Since 2002</li>
         </ul>
         <div id="scrollDown" class="demo">
-          <a href="#tasty"><span></span>Scroll</a>
+          <a href="#fairy"><span></span>Scroll</a>
         </div>
       </div>
     </div>
-    <section class="tasty py-13" id="tasty"> 
-      <div class="section-title bg-light text-center" data-aos="fade-up">
-          <div class="mb-0 mb-2 py-2 text-topic" style="background-color: rgba(0,0,0,0.1)">
-            <h2 class="mb-2">Story</h2>
-            <small class="h4">品 牌 故 事 ︱ Marie Bourgeois 研 選</small>
-          </div>
-      </div>
-      <div class="bg-milk">
+    <div id="fairy" style="height:68px"></div> <!-- 空行 -->
+    <!-- 杯子蛋糕圖 -->
+    <section class="mb-11 mb-md-13" data-aos="fade-up" data-aos-duration="2000"> 
+      <div class="row no-gutters">
+        <div class="col-md-5 offset-md-7 col-lg-6 offset-lg-6 col-xl-7 offset-xl-5 fairy-bg position-absolute"></div>
         <div class="container">
-          <div class="row no-gutters flex-column-reverse flex-md-row mb-4 mb-md-0 py-8">
-            <div class="col-md-6 col-12 d-flex align-items-md-center justify-content-md-center mb-9 mb-lg-0">
-              <div class="text pr-md-5 text-topic">
-                <h2 class="font-weight-bolder mb-4" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">主廚介紹</h2>
-                <p class="h5 lh-1 mb-3" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">資深主廚 Marie Bourgeois，有著近30年烘培的甜點資歷，曾旅居多國，走遍世界只為了尋找最原始天然的美味；曾任米其林三星餐廳擔任甜點師傅、鑽研甜點秘方，做出獨一無二且融合東西方文化的美味蛋糕，並將食材獻給每一位值得擁有更好的你。主廚靠著一顆熱愛甜點的心，一點一滴實踐心中的甜點夢想藍圖，終於成就了極致品牌秘密甜點。</p>
-              </div>
-            </div>
-            <div class="col-md-6 col-12">
-                <img class="chanel-pic img-fluid mb-2 mb-md-0" data-aos="flip-right" data-aos-delay="100" data-aos-duration="1000" src="https://upload.cc/i1/2020/12/10/DqoZF2.jpg" alt="">
-            </div>
-          </div>        
-          <div class="row no-gutters py-8">
-            <div class="col-md-6 col-12">
-              <img class="chanel-pic img-fluid mb-2 mb-md-0" data-aos="flip-right" data-aos-delay="200" data-aos-duration="1000" src="https://upload.cc/i1/2020/12/10/coniz8.jpg" alt="">
-            </div>
-            <div class="col-md-6 col-12 d-flex align-items-md-center justify-content-md-center mb-9 mb-md-0">
-              <div class="text pl-md-8 text-topic">
-                  <h2 class="font-weight-bolder mb-4" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">對的事情，就要堅持!</h2>
-                  <p class="h5 lh-1 mb-3" data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">為了健康，我們不在乎時間和成本，只希望提供好的產品給關心自己健康、喜歡天然食材的人。樂於創新與挑戰，提供最好的天然食品。秉持對天然產品的熱情與堅持，在無添加天然食品領域，累積十餘年經驗。我們仔細聆聽需求、不斷地進步與創新，只為提供優質及滿意的服務。</p>
+          <div class="row">
+            <div class="col-md-7 col-lg-6 col-xl-5">
+              <div class="fairy-title d-flex flex-column justify-content-center">
+                <div class="fairy-shadow">
+                  <h2 class="h4">童話蛋糕 X 夢幻吃的到 !</h2>
+                  <p class="mt-9 h6 text-secondary lh-lg">
+                    杯子蛋糕為剛好一人可獨享的甜品，<br>
+                    杯子蛋糕更被稱為童話蛋糕，<br>
+                    不僅杯中的蛋糕體可以做不同的口味，<br>
+                    上層的奶油裝飾更可以天馬行空，<br>
+                    不同的奶油花擠法、加入翻糖造型，<br>
+                    就像是童話故事成了女孩們的夢幻回憶。
+                  </p>
+                </div>
               </div>
             </div>
           </div>
-          <div class="row no-gutters flex-column-reverse flex-md-row mb-4 mb-md-0 py-8">
-            <div class="col-md-6 col-12 d-flex align-items-md-center justify-content-md-center mb-9 mb-lg-0">
-              <div class="text pr-md-5 text-topic">
-                <h2 class="font-weight-bolder mb-4" data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">你訂購，我現作，最新鮮</h2>
-                <p class="h5 lh-1 mb-3" data-aos="fade-up" data-aos-delay="500" data-aos-duration="1000">100%純天然食材，堆疊出富有層次的滿足；新鮮現做、單純美味，視覺與味覺的極上饗宴。新鮮的甜點是最美味的保證，採用下訂後製造。
-                    讓您輕鬆享受來自大師手藝的上乘滋味。</p>
+        </div>
+      </div>
+    </section>
+    <!-- 吃蛋糕圖 -->
+    <section class="mb-11 mb-md-13" data-aos="fade-up" data-aos-duration="2000"> 
+      <div class="row no-gutters">
+        <div class="col-md-7 eat-bg position-absolute"></div>
+        <div class="container">
+          <div class="row justify-content-end">
+            <div class="col-md-6 offset-md-6 col-lg-5 offset-lg-7">
+              <div class="fairy-title d-flex align-items-center justify-content-md-end justify-content-center">
+                <div class="eat-shadow">
+                  <h2 class="h4">為浪漫做一點事 ~</h2>
+                  <p class="mt-9 h6 text-secondary lh-lg pr-lg-13">
+                    小朋友流口水，<br>
+                    姐姐會尖叫，<br>
+                    為浪漫做一點事，<br>
+                    快點手刀訂購夢幻的甜點，<br>
+                    一成不變的日子，需要些改變!<br>
+                  </p>
+                </div>
               </div>
-            </div>
-            <div class="col-md-6 col-12">
-                <img class="chanel-pic img-fluid mb-2 mb-md-0" data-aos="flip-right" data-aos-delay="300" data-aos-duration="1000" src="https://upload.cc/i1/2020/12/10/lFshr3.jpg" alt="">
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section> 
-      <div class="section-title bg-light text-center" data-aos="fade-up">
-          <div class="mb-0 mb-2 py-2 text-topic" style="background-color: rgba(0,0,0,0.1)">
-            <h2 class="mb-2">Recommend</h2>
-            <small class="h4">熱 門 商 品 ︱ 主 廚 推 薦</small>
-          </div>
+    <!-- 輪播 -->
+    <section>
+      <div class="d-flex flex-column align-items-center mb-10">
+        <h2 class="align-center">商品推薦</h2>
+        <img class="mt-6 w-25" src="@/assets/image/divider.png" alt="">
       </div>
+      
     </section>
+
+    <!-- subscribe 歡迎訂閱 -->
     <section class="subscribe d-flex align-items-end pb-16">
       <div class="container">
-        <div class="d-flex flex-column align-items-md-start align-items-center" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+        <div class="d-flex flex-column align-items-md-start align-items-center" data-aos="fade-up" data-aos-duration="2000">
           <Validation-observer v-slot="{ invalid }">  
             <form @submit.prevent="subscription">
               <validation-provider rules="required|email" v-slot="{ errors, classes }">
                 <div class="input-group">
                   <label for="inputEmail" class="h3 lh-1 text-white font-weight-bolder mb-6">記得<br> 訂閱以獲取更多資訊及專屬優惠！</label>
                   <input name="Email" type="email" v-model="email" :class="classes" class="form-control rounded-left py-8 px-5" id="inputEmail" placeholder="請輸入Email">
-                  <!-- <div class="input-group-append"> -->
-                    <button type="submit" class="btn btn-glass rounded-right" :disabled="invalid">訂閱</button>
-                  <!-- </div> -->
+                  <button type="submit" class="btn btn-glass rounded-right" :disabled="invalid">訂閱</button>
                   <span class="invalid-feedback text-warning">{{ errors[0] }}</span>
                 </div>
               </validation-provider>
@@ -88,7 +92,7 @@
       </div>
     </section>
 
-    <!-- modal -->
+    <!-- 酷碰code modal -->
     <div class="modal fade" id="couponModal" tabindex="-1" role="dialog" aria-labelledby="couponModal" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -110,15 +114,17 @@
         </div>
       </div>
     </div>
-
   </div>
 </template>
 
 <script>
+
 export default {
   data: function(){
+
     return {
      email:'',
+
     }
   },
   methods: {
@@ -133,6 +139,61 @@ export default {
 <style lang="scss" scope>
 @import '../../assets/scss/all';
 
+.eat {
+  &-bg {
+    @include banner('../../assets/image/bgpic2.jpeg', 500px);
+    background-position: center top;
+  }
+  &-shadow{
+    text-align: center;
+    position: relative;
+    background: rgba(255,255,255,.7);
+  }
+}
+.fairy {
+  &-bg {
+    @include banner('../../assets/image/bgpic5.jpg', 500px);
+    background-position: center top;
+  }
+  &-title {
+    height: 500px;
+  }
+  &-shadow{
+    text-align: center;
+    position: relative;
+    background: rgba(255,255,255,.7);
+  }
+}
+@include smobile {
+  .fairy-shadow, .eat-shadow {
+    & .h4 {
+      font-size: 32px;
+    }
+    & .h6 {
+      font-size: 18px;
+    }
+  }
+}
+@include pad {
+  .fairy-shadow, .eat-shadow {
+    background: transparent;
+    text-align: left;
+    &:before {
+      content: '';
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      top: -50px;
+      left: -50px;
+      box-shadow: 30px 30px 15px rgba(243, 157, 157, 0.9) inset;
+    }
+  }
+  .eat-shadow:before {
+    top: 20px;
+    left: 20px;
+    box-shadow: 20px 20px 15px rgba(243, 157, 157, 0.9);
+  }
+}
 .home-banner {
     @include banner("https://upload.cc/i1/2020/12/10/0mzbhk.jpg", 100vh);
     &-text {
@@ -141,7 +202,7 @@ export default {
     }
 }
 .home-modal {
-  @include banner('../..//assets/image/mini2.jpg', 200px);
+  @include banner('../../assets/image/mini2.jpg', 200px);
   &-bg {
     background: rgba(255, 255, 255, 0.7);
     line-height: 2.5;
@@ -171,14 +232,6 @@ export default {
     }
   }
 }
-.section-title h2 {
-   font-size: 40px;
-   font-family: "Noto Serif",serif;
-   font-style: italic;
-   font-weight: 400;
-}
-
-
 .subscribe {
     @include banner("https://upload.cc/i1/2020/12/10/rJuiYq.jpg", 400px);
     background-position: center center;

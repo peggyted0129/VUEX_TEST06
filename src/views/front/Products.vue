@@ -23,10 +23,10 @@
         <div class="row">
           <div class="col-4" v-for="item in filterData" :key="item.id" data-aos="fade-up">
             <div class="product-card card border-0 mb-6">
-              <a href="#" class="card-img-top card-img position-relative" style="height:200px" @click="openProductDetail(item.id)">
+              <router-link :to="{ name: 'ProductDetail', params: { id: item.id }}" class="card-img-top card-img position-relative" style="height:200px">
                 <img class="card-img-top card-img h-100 w-100" :src="item.imageUrl" alt="Card image cap">
                 <p class="list-hover h4 font-weight-bolder d-flex align-items-center justify-content-center">點擊查看更多</p>
-              </a>
+              </router-link>
               <div class="card-body p-4">
                 <p class="badge badge-secondary mb-2">
                   {{ item.category }}
@@ -82,17 +82,10 @@ export default {
     ...mapGetters(['isLoading', 'products', 'categories', 'myFavorite']),
   },
   methods: {
-    ...mapActions(['getProducts']),
+    ...mapActions(['getProducts', 'addMyFavorite']),
     
-    addMyFavorite(id) {
-      this.$store.dispatch('addMyFavorite', id)
-    },
     addtoCart(id, productQty = 1){
-      this.$store.dispatch('addtoCart', { id, productQty });
-    },
-    openProductDetail(id) {
-      const vm = this;
-      vm.$router.push(`/product/${id}`);
+      this.$store.dispatch('cartsModules/addtoCart', { id, productQty });
     },
   },
   created() {

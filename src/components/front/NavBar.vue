@@ -18,12 +18,12 @@
           </li>
           <li class="nav-item ml-xl-9 ml-lg-5 ml-md-3">
             <a class="nav-link h5 text-center px-3 py-md-3 py-5" href="#">
-            <span class="material-icons align-bottom d-md-inline-block d-none mr-1">favorite</span>Blog
+            <span class="material-icons align-bottom d-md-inline-block d-none mr-1">favorite</span>我的最愛
             </a>
           </li>
           <li class="nav-item ml-xl-9 ml-lg-5 ml-md-3">
             <a class="nav-link h5 text-center px-3 py-md-3 py-5" href="#">
-            <span class="material-icons align-bottom d-md-inline-block d-none mr-1">thumb_up</span>門市據點
+            <span class="material-icons align-bottom d-md-inline-block d-none mr-1">thumb_up</span>訂單
             </a>
           </li>
           <li class="nav-item ml-xl-9 ml-lg-5 ml-md-3">

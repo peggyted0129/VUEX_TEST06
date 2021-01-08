@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import axios from 'axios';
 
 import cartsModules from './cart';
+import alertModules from './alertMessage';
 
 Vue.use(Vuex);  
 
@@ -74,6 +75,7 @@ export default new Vuex.Store({
             context.commit('LOADING', true);
             axios.post(api, {data: coupon} ).then((response) => {
                 console.log('coupon: ', response.data );
+                context.dispatch('alertModules/updateMessage', { message: `${response.data.message}`, status: 'info' });
                 context.dispatch('cartsModules/getCart');
                 context.commit('LOADING', false);
             });
@@ -82,7 +84,7 @@ export default new Vuex.Store({
     },
     mutations: {
         LOADING(state, status) {
-          state.isLoading = status;
+            state.isLoading = status;
         },
         GET_PRODUCTS(state, payload) {
             state.products = payload;
@@ -105,14 +107,17 @@ export default new Vuex.Store({
                 return item === id
             })
             if (index === -1) {
-                state.myFavorite.push(id)
+                state.myFavorite.push(id);
+                // store.dispatch('alertModules/updateMessage', { message: '加入最愛', status: 'info' });
                 console.log('加入最愛' , id);
             } else {
                 state.myFavorite.splice(index, 1)
+                // store.dispatch('alertModules/updateMessage', { message: "移除最愛", status: 'danger' });
                 console.log('移除最愛');
             }
             localStorage.setItem('myFavorite', JSON.stringify(state.myFavorite))
         },
+        
     },
     getters: {
         isLoading: (state) => state.isLoading,
@@ -123,7 +128,7 @@ export default new Vuex.Store({
         myFavorite: (state) => state.myFavorite,
     },
     modules: {
-        // productsModules,
         cartsModules,
+        alertModules,
     },
 });
