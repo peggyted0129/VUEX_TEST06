@@ -103,11 +103,6 @@
 .product-button {
   width: 60%;
 }
-@include pad {
-  .product-button {
-    width: 70%;
-  }
-}
 @include desktop {
   .product-button {
     width: 50%;

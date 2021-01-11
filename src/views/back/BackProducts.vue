@@ -177,15 +177,14 @@
 
 <script>
 import Pagination from '@/components/pagination';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   components: {
     Pagination,
   },
   computed: {
-    isLoading() {
-      return this.$store.state.status.isLoading;
-    }
+    ...mapGetters(['isLoading']),
   },
   data() {
     return {     

@@ -21,33 +21,40 @@
       </div>
       <div class="col-9 mt-16">
         <div class="row">
-          <div class="col-4" v-for="item in filterData" :key="item.id" data-aos="fade-up">
+          <div class="col-4" v-for="product in filterData" :key="product.id" data-aos="fade-up">
             <div class="product-card card border-0 mb-6">
-              <router-link :to="{ name: 'ProductDetail', params: { id: item.id }}" class="card-img-top card-img position-relative" style="height:200px">
-                <img class="card-img-top card-img h-100 w-100" :src="item.imageUrl" alt="Card image cap">
+              <router-link :to="{ name: 'ProductDetail', params: { id: product.id }}" class="card-img-top card-img position-relative" style="height:200px">
+                <img class="card-img-top card-img h-100 w-100" :src="product.imageUrl" alt="Card image cap">
                 <p class="list-hover h4 font-weight-bolder d-flex align-items-center justify-content-center">點擊查看更多</p>
               </router-link>
               <div class="card-body p-4">
                 <p class="badge badge-secondary mb-2">
-                  {{ item.category }}
+                  {{ product.category }}
                 </p>
-                <h3 class="card-title h5 text-topic mb-4">{{ item.title }}</h3>
+                <h3 class="card-title h5 text-topic mb-4">{{ product.title }}</h3>
                 <div class="d-flex justify-content-between align-items-baseline">
-                  <div class="h5 text-danger" v-if="!item.price">{{ item.origin_price }} 元</div>
-                  <del class="h6 text-danger" v-if="item.price">原價 {{ item.origin_price }} 元</del>
-                  <div class="h5 text-topic" v-if="item.price">特價 {{ item.price }} 元</div>
+                  <div class="h5 text-danger" v-if="!product.price">{{ product.origin_price }} 元</div>
+                  <del class="h6 text-danger" v-if="product.price">原價 {{ product.origin_price }} 元</del>
+                  <div class="h5 text-topic" v-if="product.price">特價 {{ product.price }} 元</div>
                 </div>
               </div>
               <div class="card-footer d-flex justify-content-between align-items-center pt-0 border-top-0 bg-white">
                  <!-- 加入購物車 -->
-                <a href="#" class="text-danger" @click.prevent="addtoCart(item.id)">
-                  <i class="fa fa-cart-plus fa-2x"></i>
+                <a href="#" class="text-danger" @click.prevent="addtoCart(product.id)">
+                  <i class="fas fa-spinner fa-spin fa-lg" v-if="addCartLoading === product.id"></i>
+                  <i class="fa fa-cart-plus fa-2x" v-if="addCartLoading !== product.id"></i>
                 </a>
                 <!-- 加入最愛 -->
-                <a href="#" class="text-danger" @click.prevent="addMyFavorite(item.id)">
-                  <i class="far fa-heart fa-2x" v-if="myFavorite.indexOf(item.id) === -1"></i>
-                  <i class="fas fa-heart fa-2x" v-else></i>
-                </a>
+                <button class="btn text-danger" @click="addToFavorites(product)"
+                        v-if="!favorites.map((item) => item.id).includes(product.id)">
+                  <i class="far fa-heart fa-2x"></i> 
+                </button>
+                <!-- 移除最愛 -->
+                <button class="btn text-danger" @click="removeFavoritesItem(product)"
+                        v-if="favorites.map((item) => item.id).includes(product.id)"  >
+                  <i class="fas fa-heart fa-2x"></i> 
+                </button>
+                
               </div>
             </div>
           </div>
@@ -66,9 +73,14 @@ export default {
   data() {
     return {
      searchText: '',
+
     };
   },
   computed: {
+    ...mapGetters(['isLoading']),
+    ...mapGetters('productModules', ['products', 'categories', 'favorites']),
+    ...mapGetters('cartsModules', ['addCartLoading']),
+
     filterData() {
       const vm = this;
       if (vm.searchText) {
@@ -77,16 +89,17 @@ export default {
           return data;
         });
       }
-      return this.products;
+      return vm.products;
     },
-    ...mapGetters(['isLoading', 'products', 'categories', 'myFavorite']),
   },
   methods: {
-    ...mapActions(['getProducts', 'addMyFavorite']),
-    
+    ...mapActions('productModules', ['getProducts', 'getFavorites','addToFavorites', 'removeFavoritesItem']),
+
+
     addtoCart(id, productQty = 1){
       this.$store.dispatch('cartsModules/addtoCart', { id, productQty });
     },
+    
   },
   created() {
     this.getProducts();

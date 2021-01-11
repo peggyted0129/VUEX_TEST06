@@ -199,11 +199,13 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['isLoading', 'products', 'product']),
+    ...mapGetters(['isLoading']),
+    ...mapGetters('productModules', ['products', 'product']),
     ...mapGetters('cartsModules', ['cart']),
   },
   methods: {
-    ...mapActions(['getProducts', 'getProduct', 'addCouponCode']),
+    ...mapActions(['addCouponCode']),
+    ...mapActions('productModules', ['getProducts', 'getProduct']),
     ...mapActions('cartsModules', ['getCart', 'delCart']),
 
    

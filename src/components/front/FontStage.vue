@@ -23,11 +23,11 @@
     </div>
   </footer>
 
-  <!-- 購物車 -->
-  <div class="fixcart position-fixed">
-    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#cartModal">
-      <span class="material-icons h2 pt-1">shopping_cart</span>
-      <span class="cart-badge badge position-absolute badge-pill badge-warning">3</span>
+  <!-- 我的最愛 顯示LOGO -->
+  <div class="favorite position-fixed">
+    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#favoriteModal">
+      <span class="material-icons h2 pt-1">favorite</span>
+      <span class="cart-badge badge position-absolute badge-pill badge-warning">{{ favorites.length }}</span>
     </button>
   </div>
 
@@ -39,49 +39,56 @@
   </div>
 
   <!-- Modal -->
-  <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModal" aria-hidden="true">
+  <div class="modal fade" id="favoriteModal" tabindex="-1" role="dialog" aria-labelledby="favoriteModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
-        <div class="modal-header border-0 pb-0">
-          <h4 class="modal-title text-warning font-weight-bold" id="cartModalCenterTitle">已選擇商品</h4>
+        <div class="modal-header border-0 pb-0 d-flex align-items-center">
+          <h4 class="modal-title text-warning font-weight-bold" id="favoriteModalCenterTitle">願望清單</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
         <div class="modal-body pb-0">
             <div class="table-responsive-md">
               <table class="table mb-3">
                 <thead>
-                  <tr>
-                    <th scope="col" class="text-center py-3" width="60"></th>
-                    <th scope="col" class="py-3">商品</th>
+                  <tr v-if="favorites.length > 0">
+                    <th scope="col" class="text-center py-3" width="40"></th>
+                    <th scope="col" class="text-center" width="40"></th>
+                    <th scope="col" class="py-3 pl-4">商品</th>
                     <th scope="col" class="py-3" width="60">數量</th>
-                    <th scope="col" class="py-3" width="80">單價</th>
+                    <th scope="col" class="py-3" width="50">特價</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <tr v-for="item in favorites" :key="item.id">
                     <th scope="row" class="text-center py-2">
-                      <div class="btn btn-outline-danger btn-sm p-0 border-0">
-                        <span class="material-icons h2 text-danger">delete_forever</span>
+                      <div @click="removeFavoritesItem(item)" class="btn btn-outline-danger btn-sm p-0 border-0">
+                        <span class="material-icons h2">delete_forever</span>
                       </div>
                     </th>
-                    <td class="pb-0"><span>sdfgfhgfgddv</span></td>
-                    <td class="text-left">100</td>
-                    <td class="text-right">20000</td>
+                    <th scope="row" class="text-center py-2">
+                      <div @click="addtoCart(item.id)" class="btn btn-outline-danger btn-sm p-0 border-0">
+                        <span class="material-icons h2" v-if="addCartLoading !== item.id">add_shopping_cart</span>
+                        <i class="fas fa-spinner fa-spin fa-lg" v-if="addCartLoading === item.id"></i>
+                      </div>
+                    </th>
+                    <td class="pb-0 pl-4"><router-link :to="{ name: 'ProductDetail', params: { id: item.id }}" class="text-topic font-weight-bolder">{{ item.title }}</router-link></td>
+                    <td class="text-left text-topic font-weight-bolder">1 {{ item.unit }}</td> 
+                    <td class="text-right text-topic font-weight-bolder">{{ item.price }}</td>
                   </tr>
                 </tbody>
-                <tfoot>
+                <tfoot v-if="!favorites.length">
                 <tr>
-                  <td colspan="4">
-                    <div class="text-right h5 py-4">
-                      小計  NT $1234
+                  <td colspan="5">
+                    <div class="text-center text-topic font-weight-bolder h5 py-4">
+                      還沒有商品加入願望清單哦!
                     </div>
                   </td>
                 </tr>
               </tfoot>
               </table>
             </div> 
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-warning btn-block font-weight-bolder">結帳去</button>
         </div>
       </div>
     </div>
@@ -104,14 +111,20 @@ export default {
   },
   data: function(){
     return {     
+      
     };
   },
   computed: {
     ...mapGetters(['isLoading']),
-
+    ...mapGetters('productModules', ['products', 'favorites']),
+    ...mapGetters('cartsModules', ['addCartLoading']),
   },
   methods: {
+    ...mapActions('productModules', ['getProducts', 'getFavorites', 'removeFavoritesItem']),
     
+    addtoCart(id, productQty = 1){
+      this.$store.dispatch('cartsModules/addtoCart', { id, productQty });
+    },
     scrollToTop() {
       window.scrollTo(0, 0);
     },
@@ -129,6 +142,9 @@ export default {
   },
   destroyed(){ 
      window.removeEventListener('scroll', this.ScrollHeight);
+  },
+  created() {
+    this.getFavorites();
   },
 }
 
@@ -151,7 +167,7 @@ export default {
   }
 }
 
-.fixcart {
+.favorite {
   z-index: 999;
   bottom: 25px;
   right: 30px;
@@ -170,7 +186,7 @@ export default {
     font-size: 90%;
   }
 }
-.fixcart .btn {
+.favorite .btn {
     padding: 3px 12px;
     border-radius: 50%;
     box-shadow: 0 0 10px #6c757d;

@@ -22,10 +22,15 @@
           <li class="d-flex align-items-center">
             <h4 class="product-title mr-md-10 mr-5"> {{ product.title }} </h4>
             <!-- 加入最愛 -->
-            <a href="#" class="text-danger" @click.prevent="addMyFavorite(product.id)">
-              <i class="far fa-heart fa-2x" v-if="myFavorite.indexOf(product.id) === -1"></i>
-              <i class="fas fa-heart fa-2x" v-else></i>
-            </a>
+            <button class="btn text-danger" @click="addToFavorites(product)"
+                    v-if="!favorites.map((item) => item.id).includes(product.id)">
+              <i class="far fa-heart fa-2x"></i> 
+            </button>
+            <!-- 移除最愛 -->
+            <button class="btn text-danger" @click="removeFavoritesItem(product)"
+                    v-if="favorites.map((item) => item.id).includes(product.id)"  >
+              <i class="fas fa-heart fa-2x"></i> 
+            </button>
           </li>
           <li>
             <img class="my-7" src="../../assets/image/divider.png" alt="">
@@ -49,16 +54,14 @@
             </div>
             <button type="button" class="product-button btn btn-warning p-4" :disabled="productQty === 0"
               @click="addtoCart(product.id, productQty)">
-              <i class="fas fa-cart-plus fa-lg"><span class="ml-5">加到購物車</span></i>
+              <i class="fas fa-spinner fa-spin fa-lg" v-if="addCartLoading === product.id"></i>
+              <i class="fas fa-cart-plus fa-lg" v-if="addCartLoading !== product.id"></i>
+              <span class="ml-5 h5">加到購物車</span>
             </button>
           </li>
         </ul>
       </div>
     </div>
-
-    
-
-
   </div>
 </section>
 </template>
@@ -75,10 +78,13 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['isLoading', 'product' ,'myFavorite']),
+    ...mapGetters(['isLoading']),
+    ...mapGetters('productModules', ['product', 'favorites']),
+    ...mapGetters('cartsModules', ['addCartLoading']),
   },
   methods: {
-    ...mapActions(['getProduct', 'addMyFavorite']),
+    ...mapActions('productModules', ['getProduct', 'getFavorites',
+                  'addToFavorites', 'removeFavoritesItem']),
    
     addtoCart(id, productQty =1 ){
       this.$store.dispatch('cartsModules/addtoCart',{id, productQty});
@@ -88,6 +94,7 @@ export default {
     this.productId = this.$route.params.id;
     console.log(this.productId);
     this.getProduct(this.productId);
+    this.getFavorites;
   }
 }
 
