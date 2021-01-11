@@ -78,12 +78,15 @@
                     <td class="text-right text-topic font-weight-bolder">{{ item.price }}</td>
                   </tr>
                 </tbody>
-                <tfoot v-if="!favorites.length">
+                <tfoot>
                 <tr>
                   <td colspan="5">
-                    <div class="text-center text-topic font-weight-bolder h5 py-4">
+                    <div v-if="!favorites.length" class="text-center text-topic font-weight-bolder h5 py-4">
                       還沒有商品加入願望清單哦!
                     </div>
+                    <button v-if="favorites.length > 0" @click="removeFavoritesAll" class="btn-block text-center btn btn-warning font-weight-bolder h5 py-4">
+                      全部清除
+                    </button>
                   </td>
                 </tr>
               </tfoot>
@@ -121,7 +124,10 @@ export default {
   },
   methods: {
     ...mapActions('productModules', ['getProducts', 'getFavorites', 'removeFavoritesItem']),
-    
+
+    removeFavoritesAll(){
+      this.favorites = [];
+    },
     addtoCart(id, productQty = 1){
       this.$store.dispatch('cartsModules/addtoCart', { id, productQty });
     },

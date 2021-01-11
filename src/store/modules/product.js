@@ -73,8 +73,7 @@ export default {
         },
         SET_FAVORITES(state, payload) {
             state.favorites = payload;
-          },
-        
+        },
     },
     getters: {
         products: (state) => state.products,
