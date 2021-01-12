@@ -3,14 +3,19 @@
 <div class="container-md container-fluid text-topic">
     <!-- 購物清單 -->
     <main class="pt-15 pt-sm-16">
-        <h2 class="h4 font-weight-bolder d-flex align-items-center mb-5">
+        <h2 class="h4 font-weight-bolder d-flex align-items-center mb-5" v-if="cart.total !== 0">
             <span class="material-icons h3 mr-3">shopping_cart</span>
             <span>購物清單確認</span>
         </h2>
-        <p to="/products" class="h4 text-danger py-6" v-if="cart.total === 0">購物車尚無商品，歡迎繼續選購~
-            <router-link to="/products" class="btn h3 btn-danger py-4 ml-5">前往商品列表
-            </router-link>
-        </p>
+        <div v-if="cart.total === 0">
+            <div class="cartzero mb-10 pl-15 d-flex align-items-center">
+                <div class="cartzero-bg d-flex flex-column align-items-center p-5">
+                    <p to="/products" class="h3 text-danger pb-10">你的購物車是空的~</p>
+                    <router-link to="/products" class="btn h3 w-100 btn-danger py-4 mb-3">前往商品列表</router-link>
+                </div>
+            </div>
+        </div>
+
         <div class="table-responsive">
             <table class="table mb-0" v-if="cart.total !== 0">
                 <thead>
@@ -62,7 +67,7 @@
         </div>
     </main>
     <!-- 使用優惠碼 & 訂購明細 -->    
-    <div class="row mb-12">
+    <div class="row mb-12" v-if="cart.total !== 0">
         <!-- 使用優惠碼 -->
         <div class="col-md-7">
             <h2 class="h4 font-weight-bolder d-flex align-items-center my-5">
@@ -177,4 +182,10 @@ export default {
 <style lang="scss" scope>
 @import '../../assets/scss/all';
 
+.cartzero {
+    @include banner('../../assets/image/cart.jpg', calc(100vh - 68px - 122px - 38px - 36px));
+    &-bg {
+        background: rgba(255, 255, 255, 0.6);
+    }
+}
 </style>

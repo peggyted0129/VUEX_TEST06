@@ -48,7 +48,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body pb-0">
+        <div class="modal-body pb-3">
             <div class="table-responsive-md">
               <table class="table mb-3">
                 <thead>
@@ -84,7 +84,7 @@
                     <div v-if="!favorites.length" class="text-center text-topic font-weight-bolder h5 py-4">
                       還沒有商品加入願望清單哦!
                     </div>
-                    <button v-if="favorites.length > 0" @click="removeFavoritesAll" class="btn-block text-center btn btn-warning font-weight-bolder h5 py-4">
+                    <button v-if="favorites.length > 0" @click="delFavoriteAll" class="btn-block text-center btn btn-warning font-weight-bolder h5 py-3">
                       全部清除
                     </button>
                   </td>
@@ -123,11 +123,8 @@ export default {
     ...mapGetters('cartsModules', ['addCartLoading']),
   },
   methods: {
-    ...mapActions('productModules', ['getProducts', 'getFavorites', 'removeFavoritesItem']),
+    ...mapActions('productModules', ['getProducts', 'getFavorites', 'removeFavoritesItem', 'delFavoriteAll']),
 
-    removeFavoritesAll(){
-      this.favorites = [];
-    },
     addtoCart(id, productQty = 1){
       this.$store.dispatch('cartsModules/addtoCart', { id, productQty });
     },
