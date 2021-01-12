@@ -12,23 +12,27 @@
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item"> 
-            <router-link class="nav-link h5 text-center px-3 py-md-3 py-5" to="/products">
-              <span class="material-icons align-bottom d-md-inline-block d-none mr-1">receipt_long</span>所有商品
+            <router-link class="nav-link d-flex align-items-center justify-content-center h5 text-center px-3 py-md-3 py-5" to="/products">
+              <span class="material-icons d-md-inline-block d-none mr-1">receipt_long</span>
+              <span>所有商品</span>
             </router-link>
           </li>
           <li class="nav-item ml-xl-9 ml-lg-5 ml-md-3">
-            <a class="nav-link h5 text-center px-3 py-md-3 py-5" href="#">
-            <span class="material-icons align-bottom d-md-inline-block d-none mr-1">favorite</span>我的最愛
-            </a>
+            <router-link class="nav-link d-flex align-items-center justify-content-center h5 text-center px-3 py-md-3 py-5" to="/cart">
+              <span class="material-icons d-md-inline-block d-none mr-1">shopping_cart</span>
+              <span>購物車</span>
+            </router-link>
           </li>
           <li class="nav-item ml-xl-9 ml-lg-5 ml-md-3">
-            <a class="nav-link h5 text-center px-3 py-md-3 py-5" href="#">
-            <span class="material-icons align-bottom d-md-inline-block d-none mr-1">thumb_up</span>訂單
-            </a>
+            <router-link class="nav-link d-flex align-items-center justify-content-center h5 text-center px-3 py-md-3 py-5" to="/orders">
+              <span class="material-icons d-md-inline-block d-none mr-1">thumb_up</span>
+              <span>訂單</span>
+            </router-link>
           </li>
           <li class="nav-item ml-xl-9 ml-lg-5 ml-md-3">
-            <router-link class="nav-link h5 text-center px-3 py-md-3 py-5" to="/login">
-              <span class="material-icons align-bottom d-md-inline-block d-none mr-1">account_box</span>登入後台
+            <router-link class="nav-link d-flex align-items-center justify-content-center h5 text-center px-3 py-md-3 py-5" to="/login">
+              <span class="material-icons d-md-inline-block d-none mr-1">account_box</span>
+              <span>登入後台</span>
             </router-link>
           </li>
         </ul>

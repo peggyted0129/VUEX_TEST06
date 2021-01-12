@@ -1,5 +1,5 @@
 <template>
-<section class="pt-16 text-topic">
+<section class="pt-15 pt-md-16 text-topic">
   <div class="container">
     <div class="row mb-12">
       <div class="col-md-6">
@@ -94,7 +94,7 @@ export default {
     this.productId = this.$route.params.id;
     console.log(this.productId);
     this.getProduct(this.productId);
-    this.getFavorites;
+    this.getFavorites();
   }
 }
 

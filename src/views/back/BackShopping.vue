@@ -119,8 +119,8 @@
                 </div>
               </validation-provider>
               <div class="form-group">
-                <label for="useraddress">留言</label>
-                <textarea name="" id="" class="form-control" cols="30" rows="10"
+                <label for="usertext">留言</label>
+                <textarea name="" id="usertext" class="form-control" cols="30" rows="10"
                           v-model="form.message"></textarea>
               </div>
               <div class="text-right">
@@ -220,10 +220,11 @@ export default {
       const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/order`;
       const order = vm.form;
       vm.$store.dispatch('updateLoading', true);
-      this.$http.post(api, {data: order} ).then((response) => {
+      vm.$http.post(api, {data: order} ).then((response) => {
         console.log('訂單已建立: ',response.data);
         if(response.data.success){
           vm.$router.push(`/back_order_checkout/${response.data.orderId}`);
+          //orderId 要和路由設定一樣
         }
         vm.$store.dispatch('updateLoading', false);
       });
@@ -239,6 +240,6 @@ export default {
 
 <style scoped>
 .invalid-feedback {
-  font-size: 100%;
+   font-size: 100%;
 }
 </style>

@@ -2,7 +2,7 @@
 <section>
   <div class="container">
     <div class="row">
-      <div class="col-3 mt-16">
+      <div class="col-md-3 mt-md-16 mt-15">
         <!-- 搜尋框 -->
         <div class="input-group mb-6">
           <input class="form-control" type="text" v-model="searchText" placeholder="Search" aria-label="Search">
@@ -19,9 +19,9 @@
                 v-for="item in categories" :key="item" class="list-group-item list-group-item-action h5">{{ item }}</a></li>
         </ul>
       </div>
-      <div class="col-9 mt-16">
+      <div class="col-md-9 mt-md-16 mt-0">
         <div class="row">
-          <div class="col-4" v-for="product in filterData" :key="product.id" data-aos="fade-up">
+          <div class="col-lg-4 col-sm-6" v-for="product in filterData" :key="product.id" data-aos="fade-up">
             <div class="product-card card border-0 mb-6">
               <router-link :to="{ name: 'ProductDetail', params: { id: product.id }}" class="card-img-top card-img position-relative" style="height:200px">
                 <img class="card-img-top card-img h-100 w-100" :src="product.imageUrl" alt="Card image cap">
@@ -39,7 +39,7 @@
                 </div>
               </div>
               <div class="card-footer d-flex justify-content-between align-items-center pt-0 border-top-0 bg-white">
-                 <!-- 加入購物車 -->
+                <!-- 加入購物車 -->
                 <a href="#" class="text-danger" @click.prevent="addtoCart(product.id)">
                   <i class="fas fa-spinner fa-spin fa-lg" v-if="addCartLoading === product.id"></i>
                   <i class="fa fa-cart-plus fa-2x" v-if="addCartLoading !== product.id"></i>
@@ -153,5 +153,14 @@ export default {
   background: transparent;
   color: transparent;
 }
-
+@media (min-width: 450px) {
+  .product-card {
+    margin: 0 80px;
+  }
+}
+@media (min-width: 576px) {
+  .product-card {
+    margin: 0 0;
+  }
+}
 </style>

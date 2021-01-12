@@ -16,6 +16,7 @@ export default new Vuex.Store({
         order: {
             user: {},
         },
+        orderStep: 'create',
     },
     actions: {
         updateLoading(context, status) {
@@ -54,6 +55,9 @@ export default new Vuex.Store({
                 context.commit('LOADING', false);
             });
         },
+        setOrderStep(context, step) {
+            context.commit('SET_ORDER_STEP', step);
+        },
     },
     mutations: {
         LOADING(state, status) {
@@ -62,10 +66,14 @@ export default new Vuex.Store({
         GET_ORDER(state, payload) {
             state.order = payload;
         },
+        SET_ORDER_STEP(state, payload) {
+            state.orderStep = payload;
+        },
     },
     getters: {
         isLoading: (state) => state.isLoading,
         order: (state) => state.order,
+        orderStep: (state) => state.orderStep,
     },
     modules: {
         cartsModules,

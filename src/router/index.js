@@ -35,6 +35,38 @@ const routes = [
                 name: 'ProductDetail',
                 component: () => import('@/views/front/Product'),
             },
+            {
+                path: 'orders',  // 訂單列表
+                name: 'Orders', 
+                component: () => import('@/views/front/Orders'),
+            },
+            {
+                path: 'cart',  // 購物車列表
+                name: 'Cart', 
+                component: () => import('@/views/front/Cart'),
+            },
+            {
+                path: '/checkout',
+                component: () => import('@/components/front/Checkout'),
+                children: [
+                  {
+                    path: 'order_create',  // 建立訂單 (填寫資訊)
+                    name: 'OrderCreate',
+                    component: () => import('@/views/front/OrderCreate'),
+                  },
+                  {
+                    path: 'order_paying/:orderId',  // 確認訂單
+                    name: 'OrderPaying',
+                    component: () => import('@/views/front/OrderPaying'),
+                  },
+                ]
+                //   {
+                //     path: 'order_paid/:id',  // 結帳成功
+                //     name: 'OrderPaid',
+                //     component: () => import('@/views/front/OrderPaid'),
+                //   },
+                // ],
+            },
         ]
     },
     {

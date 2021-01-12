@@ -1,0 +1,66 @@
+/*----  Cart.vue ----*/
+/*----  line 進度條 ----*/
+.cart-check {
+    padding-top: 120px;
+    padding-bottom: 80px;
+}
+
+// line
+.timeline-section {
+    height: 5px; 
+}
+
+//timeline point
+.timeline-pointer{
+    position: relative;
+    & .h6 {
+        font-size: 16px;
+    }
+    & .cart-circle {
+        position: absolute;
+        left: 50%;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        transform: translate(-50%,-50%);
+        background-color: $secondary;
+    }
+    & .h6.active-text {
+        font-weight: bolder;
+        color: #000;
+    }
+    & .cart-step {
+        font-size: 28px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        color: $white;
+    }
+} 
+@include mobile {
+    .timeline-pointer {
+        & .h6 {
+            font-size: 20px;
+        }
+        & .cart-circle {
+            width: 60px;
+            height: 60px;
+        }
+        & .cart-step {
+            font-size: 32px;
+        }
+    }
+}
+@include pad {
+    .cart-check {
+        padding-top: 120px;
+        padding-bottom: 20px;
+    }
+}
+@include desktop {
+    .cart-check {
+        padding-top: 150px;
+        padding-bottom: 100px;
+    }
+}
