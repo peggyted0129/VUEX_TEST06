@@ -2,6 +2,8 @@
 
 > Vue CLI 4 電商
 
+![Emily Shop首頁](https://upload.cc/i1/2021/01/13/SdH3jp.png)
+
 ## DEMO
 
 <https://peggyted0129.github.io/VUEX_TEST06/>
