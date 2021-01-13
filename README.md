@@ -28,7 +28,8 @@
 - Vue Router
 - Vue Components
 - Vuex
-- RESTful APIs
+- axios 套件
+- swiper 套件
 - RWD
 - Bootstrap 4
 - JavaScript（ES6、LocalStorage 等）
