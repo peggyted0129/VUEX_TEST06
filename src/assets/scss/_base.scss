@@ -36,5 +36,7 @@ ul,ol,li{
     padding: 0 0 0 0;
 	vertical-align: middle;
 }
-
-
+.btn:focus {
+	outline: 0;
+	box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
+}

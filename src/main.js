@@ -6,6 +6,11 @@ import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
 import 'bootstrap';
 
+// Swiper
+import VueAwesomeSwiper from 'vue-awesome-swiper';
+import 'swiper/swiper-bundle.css';
+
+
 // VeeValidate
 import { ValidationProvider, ValidationObserver, extend, localize, configure } from 'vee-validate';
 import * as rules from 'vee-validate/dist/rules';
@@ -31,6 +36,7 @@ Vue.config.productionTip = false;
 Vue.component('Loading', Loading);
 Vue.filter('currency', currencyFilter);
 Vue.filter('date', date);
+Vue.use(VueAwesomeSwiper, /* { default options with global component } */);
 
 // 規則導出加入VeeValidate
 Object.keys(rules).forEach((rule) => {

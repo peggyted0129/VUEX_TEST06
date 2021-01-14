@@ -10,7 +10,7 @@
         <div v-if="cart.total === 0">
             <div class="cartzero mb-10 pl-15 d-flex align-items-center">
                 <div class="cartzero-bg d-flex flex-column align-items-center p-5">
-                    <p to="/products" class="h3 text-danger pb-10">你的購物車是空的~</p>
+                    <p to="/products" class="h3 font-weight-bolder text-danger pb-10">你的購物車是空的~</p>
                     <router-link to="/products" class="btn h3 w-100 btn-danger py-4 mb-3">前往商品列表</router-link>
                 </div>
             </div>
@@ -20,9 +20,9 @@
             <table class="table mb-0" v-if="cart.total !== 0">
                 <thead>
                     <tr>
-                        <th scope="col" style="min-width: 60px" class="py-4">圖片</th>
+                        <th scope="col" style="min-width: 60px" class="d-md-table-cell d-none py-4">圖片</th>
                         <th scope="col" class="py-4 pl-6">品項</th>
-                        <th scope="col" style="min-width: 60px;" class="py-4">原價</th>
+                        <th scope="col" style="min-width: 60px;" class="d-md-table-cell d-none py-4">原價</th>
                         <th scope="col" style="min-width: 60px;" class="py-4">特價</th>
                         <th scope="col" style="min-width: 60px;" class="py-4">數量</th>
                         <th scope="col" style="min-width: 80px;" class="py-4 pl-7">總計</th>
@@ -31,7 +31,7 @@
                 </thead>
                 <tbody>
                     <tr v-for="(item) in cart.carts" :key="item.id">
-                        <td class="py-4">
+                        <td class="d-md-table-cell d-none py-4">
                             <router-link :to="{ name: 'ProductDetail', params: { id: item.product.id }}" style="height: 60px; background-size: cover; background-position: center;"
                                 :style="{backgroundImage: `url(${item.product.imageUrl})`}">
                             </router-link>
@@ -42,7 +42,7 @@
                                 已套用優惠券
                             </div>
                         </td>
-                        <td class="text-secondary">{{ item.product.origin_price | currency }}</td>
+                        <td class="text-secondary d-md-table-cell d-none">{{ item.product.origin_price | currency }}</td>
                         <td class="py-4 text-secondary">{{ item.product.price | currency }}</td>
                         <td class="py-4 text-secondary">
                             <select v-model="item.qty"

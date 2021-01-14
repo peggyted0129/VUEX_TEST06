@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div>
     <div class="home-banner" style="height:100vh">
       <div class="container h-100 d-flex flex-column align-items-center justify-content-center">
         <ul class="home-banner-text px-md-10 px-4 py-4" data-aos="fade-up" data-aos-delay="800">
@@ -64,12 +64,15 @@
     </section>
 
     <!-- 輪播 -->
-    <section>
-      <div class="d-flex flex-column align-items-center mb-10">
-        <h2 class="align-center">商品推薦</h2>
-        <img class="mt-6 w-25" src="@/assets/image/divider.png" alt="">
-      </div>
-      
+    <section class="container position-relative mb-md-13">
+        <div class="d-flex flex-column align-items-center">
+          <h2 class="align-center">口碑推薦</h2>
+          <img class="mt-6 title-mark" src="@/assets/image/divider.png" alt="">
+        </div>
+
+        <!-- 輪播內容 -->
+        <Carousel />
+         
     </section>
 
     <!-- subscribe 歡迎訂閱 -->
@@ -109,7 +112,7 @@
             </p>
           </div>
           <div class="modal-footer">
-            <a href="#" class="btn btn-warning" data-dismiss="modal">快去選購</a>
+            <router-link to="/products" class="btn btn-warning" data-dismiss="modal">快去選購</router-link>
           </div>
         </div>
       </div>
@@ -118,20 +121,23 @@
 </template>
 
 <script>
+import Carousel from '@/components/front/Carousel';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
+  components: {
+    Carousel,
+  },
   data: function(){
-
     return {
-     email:'',
-
+     email: '',
     }
   },
   methods: {
     subscription(){
       $('#couponModal').modal('show')
     }
-  }
+  },
 };
 
 </script>
@@ -139,6 +145,9 @@ export default {
 <style lang="scss" scope>
 @import '../../assets/scss/all';
 
+.title-mark {
+  width: 75%;
+}
 .eat {
   &-bg {
     @include banner('../../assets/image/bgpic2.jpeg', 500px);
@@ -173,8 +182,14 @@ export default {
       font-size: 18px;
     }
   }
+  .title-mark {
+    width: 55%;
+  }
 }
 @include pad {
+  .title-mark {
+    width: 30%;
+  }
   .fairy-shadow, .eat-shadow {
     background: transparent;
     text-align: left;
@@ -266,11 +281,5 @@ export default {
     }
   }
 }
-.form-control:focus {
-    box-shadow: 0 0 0 0.25rem rgba(248, 195, 50, 0.8);
-}
-
-
-
 
 </style>

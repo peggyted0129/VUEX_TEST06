@@ -8,6 +8,7 @@
                 <tr>
                 <th scope="col" style="min-width: 120px" class="py-4">訂單時間</th>
                 <th scope="col" class="py-4">訂單編號</th>
+                <th scope="col" style="min-width: 110px;" class="py-4">顧客姓名</th>
                 <th scope="col" style="min-width: 300px;" class="py-4">訂單商品</th>
                 <th scope="col" style="min-width: 130px" class="py-4">是否付款</th>
                 </tr>
@@ -16,6 +17,7 @@
                 <tr v-for="order in orders" :key="order.id">
                     <td class="py-4 text-secondary">{{ order.create_at | date }}</td>
                     <td class="py-4 text-secondary">{{ order.id }}</td>
+                    <td class="py-4 text-secondary">{{ order.user.name }}</td>
                     <td class="py-4 text-secondary">
                         <div v-for="item in order.products" :key="item.id">
                         {{ item.product.title }} * {{ item.qty

@@ -34,23 +34,20 @@ export default {
             const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
             context.commit('SET_FAVORITES', favorites);
             console.log('getFavorites: ', favorites );
-            // console.log('context.state: ', context.state );
         },
         addToFavorites(context, product) {
-            const { favorites } = context.state; // 在 context.state 裡新增 favorites
-            context.commit('ADD_FAVORITES', product); // 先新增屬性後再推入最愛的產品資料
+            context.commit('ADD_FAVORITES', product); 
       
-            localStorage.setItem('favorites', JSON.stringify(favorites));
-            context.commit('SET_FAVORITES', favorites);  
+            localStorage.setItem('favorites', JSON.stringify(context.state.favorites));
+            context.commit('SET_FAVORITES', context.state.favorites);  
             context.dispatch('getFavorites');
             context.dispatch('alertModules/updateMessage', { message: "已加入我的最愛", status: 'info' });
         },
         removeFavoritesItem(context, product) {
-            const { favorites } = context.state;
             context.commit('DEL_FAVORITES', product); 
       
-            localStorage.setItem('favorites', JSON.stringify(favorites));
-            context.commit('SET_FAVORITES', favorites);
+            localStorage.setItem('favorites', JSON.stringify(context.state.favorites));
+            context.commit('SET_FAVORITES', context.state.favorites);
             context.dispatch('getFavorites');
             context.dispatch('alertModules/updateMessage', { message: "已刪除我的最愛", status: 'danger' });
         },
@@ -64,10 +61,10 @@ export default {
             state.favorites.push( payload );
         },
         DEL_FAVORITES(state, payload) {  
-            const productIndexInFavorites = state.favorites.findIndex(
+            const indexFavorites = state.favorites.findIndex(
                 (item) => item.id === payload.id,
             );
-            state.favorites.splice(productIndexInFavorites, 1);
+            state.favorites.splice(indexFavorites, 1);
         },
         SET_FAVORITES(state, payload) {
             state.favorites = payload;

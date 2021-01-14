@@ -55,17 +55,16 @@ const routes = [
                     component: () => import('@/views/front/OrderCreate'),
                   },
                   {
-                    path: 'order_paying/:orderId',  // 確認訂單
+                    path: 'order_paying/:orderId',  // 確認訂單 (注意orderId變數)
                     name: 'OrderPaying',
                     component: () => import('@/views/front/OrderPaying'),
                   },
-                ]
-                //   {
-                //     path: 'order_paid/:id',  // 結帳成功
-                //     name: 'OrderPaid',
-                //     component: () => import('@/views/front/OrderPaid'),
-                //   },
-                // ],
+                  {
+                    path: 'order_paid/:orderId',  // 結帳成功 (注意orderId變數)
+                    name: 'OrderPaid',
+                    component: () => import('@/views/front/OrderPaid'),
+                  },
+                ],
             },
         ]
     },

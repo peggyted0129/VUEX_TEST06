@@ -1,0 +1,29 @@
+/* Swiper */  
+
+.swiper-button-next:after, .swiper-button-prev:after {
+  font-family: none; 
+  font-size: none;
+  content: '';
+}
+.swiper-button-next, .swiper-button-prev {
+  position: absolute;
+  font-size: 50px;
+  right: 15px;
+  top: 60%;
+  color: $topic;
+  &:focus, &:hover {
+    color: $warning;
+  }
+}
+.swiper-button-prev {
+    transform: rotate(180deg);
+    left: 15px;
+}
+.swiper-slide {
+  left: 0;
+  text-align: center;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

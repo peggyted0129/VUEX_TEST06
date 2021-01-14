@@ -113,6 +113,8 @@ export default {
 @import '../../assets/scss/all';
 
 .list-group {
+  position: sticky;
+  top: 60px;
   &-item-action {
     border: 1px solid rgba(0, 0, 0, 0.125);
     color: $topic;
@@ -127,6 +129,12 @@ export default {
     color: #fff;
     background-color: $topic;
     border-color:  rgba(0, 0, 0, 0.125);
+  }
+}
+@include pad {
+  .list-group {
+    position: sticky;
+    top: 68px;
   }
 }
 .form-control:focus {

@@ -26,7 +26,7 @@
                         <div class="cart-circle bg-secondary" :class="{ active: orderStep == 'paid' }">
                             <span class="cart-step">3</span>
                         </div>
-                        <p class="h6 px-0 py-10 text-secondary font-weight-bolder" :class="{ activetext: orderStep == 'paid'}">確認付款</p>
+                        <p class="h6 px-0 py-10 text-secondary font-weight-bolder" :class="{ activetext: orderStep == 'paid'}">付款完成</p>
                     </div>
                 </li>
             </ul>

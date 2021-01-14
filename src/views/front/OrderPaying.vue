@@ -9,10 +9,10 @@
 			</ol>
 	</nav>
   <div class="row mb-10">
-    <div class="col-md-5">
+    <div class="col-md-5 mb-5">
       <div class="card border">
         <h5 class="card-header">訂單明細</h5>
-        <div class="card-body">
+        <div class="card-body font-weight-bolder">
           <div class="d-flex mb-4">
             <h6 class="card-title mr-auto">訂單編號</h6>
             <p class="card-text h6">{{ order.id }}</p>
@@ -61,13 +61,12 @@
           </div>
           <div class="d-flex mb-4">
             <h6 class="card-title mr-auto">付款狀態</h6> 
-            <span v-if="!order.is_paid" class="text-danger pl-12">尚未付款</span>
-            <span v-else class="text-success pl-12">付款完成</span>
+            <span v-if="!order.is_paid" class="text-danger font-weight-bolder pl-12">尚未付款</span>
           </div>
         </div>
       </div>
-      <div class="text-center" v-if="order.is_paid === false">
-        <button @click="payOrder" class="btn btn-warning font-weight-bolder w-50">確認付款去</button>
+      <div class="text-center">
+        <button @click="payOrder(orderId)" class="btn btn-warning font-weight-bolder w-50">確認付款</button>
       </div>
     </div>
   </div>
@@ -91,12 +90,16 @@ export default {
   methods: {
     ...mapActions(['setOrderStep']),
 
+  
     getOrder(){
       this.$store.dispatch('getOrder', this.orderId);
     },
     payOrder(){
-      this.$store.dispatch('payOrder', this.orderId);
-    }
+      this.$store.dispatch('payOrder', this.orderId).then(() => {
+        // this.$router.push({ name: 'OrderPaid' });
+        this.$router.push(`/checkout/order_paid/${this.orderId}`);
+      });
+    },
   },
   created() {
     const vm = this;
