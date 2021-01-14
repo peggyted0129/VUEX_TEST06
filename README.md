@@ -31,7 +31,7 @@
 - Vue Components
 - Vuex
 - axios 套件
-- swiper 套件
+- vue-awesome-swiper 套件
 - RWD
 - Bootstrap 4
 - JavaScript（ES6、LocalStorage 等）
