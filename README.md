@@ -1,12 +1,9 @@
-# 電商網站 —— Emily Shop
+# 蛋糕電商網站 —— Emily Shop  [Demo](https://peggyted0129.github.io/VUEX_TEST06/)  
 
 > Vue CLI 4 電商
+> 這是一份以 Vue.js 為框架的前端練習作品，無任何商業用途
 
 ![Emily Shop首頁](https://upload.cc/i1/2021/01/13/SdH3jp.png)
-
-## DEMO
-
-<https://peggyted0129.github.io/VUEX_TEST06/>
 
 ## 簡介
 
@@ -24,18 +21,23 @@
   - 優惠碼管理（建立、更新、刪除）
   - 訂單列表
   
-## 使用技術
+## Skills | 使用技術
 
 - Vue Cli 4
 - Vue Router
-- Vue Components
+- Webpack
 - Vuex
-- axios 套件
-- vue-awesome-swiper 套件
 - RWD
 - Bootstrap 4
 - JavaScript（ES6、LocalStorage 等）
 - SCSS
+
+## Plugins | 使用插件
+
+- axios 套件
+- vue-awesome-swiper 套件
+[vue-axios](https://www.npmjs.com/package/vue-axios)、[vue-loading-overlay](https://www.npmjs.com/package/vue-loading-overlay)、[vee-validate](https://logaretm.github.io/vee-validate/)、[vue-awesome-swiper](https://github.surmon.me/vue-awesome-swiper/)、[AOS](https://michalsnik.github.io/aos/)
+
 
 ## Project setup
 ```
