@@ -85,7 +85,7 @@ export default {
       const vm = this;
       if (vm.searchText) {
         return vm.products.filter((item) => {
-          const data = item.title.toLowerCase().includes(vm.searchText.toLowerCase());
+          const data = item.category.toLowerCase().includes(vm.searchText.toLowerCase());
           return data;
         });
       }

@@ -81,10 +81,13 @@
                 <tfoot>
                 <tr>
                   <td colspan="5">
-                    <div v-if="!favorites.length" class="text-center text-topic font-weight-bolder h5 py-4">
-                      還沒有商品加入願望清單哦!
+                    <div v-if="!favorites.length" class="py-4">
+                      <p class="text-center text-topic font-weight-bolder h5 mt-5 mb-10">還沒有商品加入願望清單哦!</p>
+                      <router-link to="/products" class="btn-block text-center btn btn-warning font-weight-bolder h5 py-3">
+                        前往選購商品
+                      </router-link>
                     </div>
-                    <button v-if="favorites.length > 0" @click="delFavoriteAll" class="btn-block text-center btn btn-warning font-weight-bolder h5 py-3">
+                    <button v-if="favorites.length > 0" @click="delFavoriteAll" class="btn-block text-center btn btn-warning font-weight-bolder h5 py-3 mt-7">
                       全部清除
                     </button>
                   </td>

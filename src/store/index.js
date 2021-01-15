@@ -14,6 +14,7 @@ export default new Vuex.Store({
     state: {
         isLoading: false,
         order: {
+            products: {},
             user: {},
         },
         orderStep: 'create',
@@ -38,6 +39,7 @@ export default new Vuex.Store({
                 console.log('payOrder', response.data);
                 if (response.data.success) {
                     context.dispatch('getOrder', orderId);
+                    context.dispatch('alertModules/updateMessage', { message: "付款完成", status: 'info' });
                 }
                 context.commit('LOADING', false);
             });

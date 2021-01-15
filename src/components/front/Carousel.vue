@@ -4,7 +4,7 @@
     <div class="p-7">
       <div class="swiper-container" data-aos="fade-up" data-aos-duration="2000">
         <div class="swiper-wrapper">       
-          <swiper :options="swiperOptionProducts" ref="mySwiper" v-if="products.length">
+          <swiper :options="swiperOptionProducts" ref="mySwiper" v-if="products.length>1">
             <ul class="swiper-slide" v-for="product in products" :key="product.id">
               <li class="card w-100 border-0">
                 <div class="card-body border shadow radius-m text-topic p-0 m-5">
@@ -52,20 +52,19 @@ export default {
   data: function(){
 
     return {
-     email:'',
-     // Swiper 
      swiperOptionProducts: {
         direction: "horizontal",
         speed: 800,
         slidesPerView: 1,
         spaceBetween: 30,
         loop: true,
-        autoplay: true,
+        // autoplay: true,
+
         autoplay:{
-            disableOnInteraction: false
+          delay: 2000, 
+          disableOnInteraction: false
         },
-        observer:true,//修改swiper自己或子元素时，自动初始化swiper
-        observeParents:true,//修改swiper的父元素时，自动初始化swiper
+
         pagination: {
           el: '.swiper-pagination'
         },

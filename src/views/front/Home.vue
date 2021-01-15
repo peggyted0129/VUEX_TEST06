@@ -76,7 +76,7 @@
     </section>
 
     <!-- subscribe 歡迎訂閱 -->
-    <section class="subscribe d-flex align-items-end pb-16">
+    <section class="subscribe d-flex align-items-end pb-16" id="subscribe">
       <div class="container">
         <div class="d-flex flex-column align-items-md-start align-items-center" data-aos="fade-up" data-aos-duration="2000">
           <Validation-observer v-slot="{ invalid }">  

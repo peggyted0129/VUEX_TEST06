@@ -9,7 +9,7 @@
 	</nav>
 	<div class="row mb-12">
 		<!-- 訂單說明 -->
-		<div class="col-md-5">
+		<div class="col-md-5 mb-6">
 			<div class="card border">
 				<h5 class="card-header">訂單說明</h5>
 				<div class="card-body">
@@ -17,7 +17,7 @@
 							<h5 class="card-title mr-auto">商品數量</h5>
 							<p class="card-text h5">{{ cart.carts.length }} 件</p>
 					</div>
-					<div class="d-flex mb-10" v-if="cart.total === cart.final_total">
+					<div class="d-flex mb-md-10 mb-0" v-if="cart.total === cart.final_total">
 							<h5 class="card-title mr-auto">金額總計</h5>
 							<p class="card-text text-danger h5 font-weight-bolder">{{ cart.total | currency }} 元</p>
 					</div>
@@ -25,7 +25,7 @@
 							<h5 class="card-title mr-auto h5">金額總計</h5>
 							<p class="card-text text-danger h5 font-weight-bolder">{{ cart.final_total | currency }} 元</p>
 					</div>
-					<hr class="my-10">
+					<hr class="my-md-10 my-5">
 					<ul>
 						<li class="font-weight-bolder lh-lg">[ 商品配送需知 ]</li>
 						<li class="text-secondary d-flex">
@@ -39,7 +39,7 @@
 						</li>
 						<li class="font-weight-bolder lh-lg">[ 退換貨資訊 ]</li>
 						<li class="text-secondary d-flex">
-							<span class="mr-3">★</span><p>蛋糕皆為接單製作生產，如果訂單狀態為【已確認】，即無法取消或退款。如有其他不可抗之因素，請致電客服詢問。</p>
+							<span class="mr-3">★</span><p>蛋糕皆為接單製作生產，如果按下【送出訂單】，即無法取消或退款。如有其他不可抗之因素，請致電客服詢問。</p>
 						</li>
 					</ul>
 				</div>
@@ -135,11 +135,12 @@ export default {
       const order = vm.form;
       vm.$store.dispatch('updateLoading', true);
       vm.$http.post(api, {data: order} ).then((response) => {
-        console.log('訂單建立失敗');
+				console.log('訂單建立失敗');
         if(response.data.success){
 					vm.$router.push(`/checkout/order_paying/${response.data.orderId}`); 
 					//orderId 要和路由設定一樣
 					console.log('訂單已建立: ',response.data);
+					vm.$store.dispatch("alertModules/updateMessage", { message: "訂單建立成功", status: "info" });
         }
         vm.$store.dispatch('updateLoading', false);
       });

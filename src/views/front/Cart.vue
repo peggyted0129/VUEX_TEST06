@@ -82,10 +82,9 @@
                     </button>
                 </div>
             </div>
-            <!-- <a class="btn btn-warning py-3 d-block rounded mb-5 text-center">
+            <router-link to="/subscribe" @click.native="scrollFix('#subscribe')" class="btn btn-milk py-3 d-block rounded mb-5 text-center">
                 沒有優惠碼嗎？ 點此<strong class="text-danger">「訂閱我們」</strong>取得優惠碼！
-            </a> -->
-            <div class="alert alert-warning font-weight-bolder" role="alert">輸入「HappyCoupon」， 會員享8折優惠!</div>
+            </router-link>
         </div>
         <!-- 訂購明細 -->
         <div class="col-md-5">
@@ -134,6 +133,7 @@ export default {
   data() {
     return {
       coupon_code: '',
+      
     };
   },
   
@@ -144,6 +144,11 @@ export default {
   },
   methods: {
     ...mapActions('cartsModules', ['getCart', 'delCart']),
+
+     scrollFix: function(hashbang)
+        {
+            location.href = hashbang;
+        },
     
     addCouponCode(){
       this.$store.dispatch('addCouponCode',this.coupon_code);
@@ -158,10 +163,10 @@ export default {
       const addAPI = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/cart`;
       const changeCart = {
         product_id: productId,
-        qty: qty
+        qty: qty,
       };
       vm.$http.all([vm.$http.delete(delAPI), vm.$http.post(addAPI, { data: changeCart })])
-        .then( vm.$http.spread((delResp, addResp) => {
+        .then( vm.$http.spread(() => {
             vm.getCart();
             vm.$store.dispatch("updateLoading", false);
             vm.$store.dispatch("alertModules/updateMessage", {
@@ -182,6 +187,12 @@ export default {
 <style lang="scss" scope>
 @import '../../assets/scss/all';
 
+.table {
+    min-width: 450px;
+}
+.table-responsive {
+    overflow-x: auto;
+}
 .cartzero {
     @include banner('../../assets/image/cart.jpg', calc(100vh - 68px - 122px - 38px - 36px));
     &-bg {

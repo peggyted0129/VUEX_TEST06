@@ -1,24 +1,24 @@
 <template>
 <section>
-    <div class="container">
-        <h2 class="text-center pt-16">訂單列表</h2>
-        <div class="table-responsive mt-10">
+    <div class="container-md container-fluid">
+        <h2 class="text-center pt-14 pt-md-16">訂單列表</h2>
+        <div class="table-responsive mt-5">
             <table class="table" v-if="orders">
             <thead>
                 <tr>
                 <th scope="col" style="min-width: 120px" class="py-4">訂單時間</th>
                 <th scope="col" class="py-4">訂單編號</th>
-                <th scope="col" style="min-width: 110px;" class="py-4">顧客姓名</th>
-                <th scope="col" style="min-width: 300px;" class="py-4">訂單商品</th>
-                <th scope="col" style="min-width: 130px" class="py-4">是否付款</th>
+                <th scope="col" style="min-width: 120px;" class="d-lg-table-cell d-none py-4 px-5">顧客姓名</th>
+                <th scope="col" style="min-width: 220px;" class="py-4 px-5">訂單商品</th>
+                <th scope="col" style="min-width: 100px" class="py-4">是否付款</th>
                 </tr>
             </thead>
             <tbody>
                 <tr v-for="order in orders" :key="order.id">
                     <td class="py-4 text-secondary">{{ order.create_at | date }}</td>
                     <td class="py-4 text-secondary">{{ order.id }}</td>
-                    <td class="py-4 text-secondary">{{ order.user.name }}</td>
-                    <td class="py-4 text-secondary">
+                    <td class="py-4 px-5 text-secondary d-lg-table-cell d-none">{{ order.user.name }}</td>
+                    <td class="py-4 px-5 text-secondary">
                         <div v-for="item in order.products" :key="item.id">
                         {{ item.product.title }} * {{ item.qty
                         }}{{ item.product.unit }}
