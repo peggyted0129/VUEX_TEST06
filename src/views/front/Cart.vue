@@ -45,10 +45,15 @@
                         <td class="text-secondary d-md-table-cell d-none">{{ item.product.origin_price | currency }}</td>
                         <td class="py-4 text-secondary">{{ item.product.price | currency }}</td>
                         <td class="py-4 text-secondary">
-                            <select v-model="item.qty"
-                                    @change="changeQty(item.id, item.product.id, item.qty)">
+                            <select v-model="select"
+                                    @change="changeQty(item.id, item.product.id, select)">
                                 <option :value="num" v-for="num in 10" :key="num">{{ num }}</option>
                             </select>
+
+                            <!-- <select v-model="item.qty"
+                                    @change="changeQty(item.id, item.product.id, item.qty)">
+                                <option :value="num" v-for="num in 10" :key="num">{{ num }}</option>
+                            </select> -->
                             {{ item.product.unit }}
                         </td>
                         <td class="py-4 text-secondary pl-7">
@@ -133,7 +138,7 @@ export default {
   data() {
     return {
       coupon_code: '',
-      
+      select:'',
     };
   },
   
@@ -156,14 +161,14 @@ export default {
     addtoCart(id, productQty =1 ){
         this.$store.dispatch('cartsModules/addtoCart',{id, productQty});
     },
-    changeQty(id, productId, qty) {
+    changeQty(id, productId, select) {
       const vm = this;
       vm.$store.dispatch("updateLoading", true);
       const delAPI = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/cart/${id}`;
       const addAPI = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/cart`;
       const changeCart = {
         product_id: productId,
-        qty: qty,
+        select: qty,
       };
       vm.$http.all([vm.$http.delete(delAPI), vm.$http.post(addAPI, { data: changeCart })])
         .then( vm.$http.spread(() => {
