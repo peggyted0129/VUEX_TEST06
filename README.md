@@ -4,10 +4,8 @@
 
   這是一份以 Vue.js 為框架的前端練習作品，無任何商業用途
 
-<<<<<<< HEAD
 ![Emily Shop首頁](https://upload.cc/i1/2021/01/13/SdH3jp.png)
 =======
->>>>>>> 52fcfb3dc3ac65a9c465ae65137132e22bafd8b1
 
 ## 簡介
 
