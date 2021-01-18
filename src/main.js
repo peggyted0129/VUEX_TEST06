@@ -10,6 +10,13 @@ import 'bootstrap';
 import VueAwesomeSwiper from 'vue-awesome-swiper';
 import 'swiper/swiper-bundle.css';
 
+// Swiper 自動輪播
+import { Swiper as SwiperClass, Pagination, Mousewheel, Autoplay } from 'swiper/core';
+import getAwesomeSwiper from 'vue-awesome-swiper/dist/exporter';
+SwiperClass.use([Pagination, Mousewheel, Autoplay]);
+Vue.use(getAwesomeSwiper(SwiperClass));
+
+
 
 // VeeValidate
 import { ValidationProvider, ValidationObserver, extend, localize, configure } from 'vee-validate';

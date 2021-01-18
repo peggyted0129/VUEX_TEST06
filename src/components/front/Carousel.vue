@@ -58,8 +58,8 @@ export default {
         slidesPerView: 1,
         spaceBetween: 30,
         loop: true,
-        // autoplay: true,
 
+        // 自動輪播要加的語法
         autoplay:{
           delay: 2000, 
           disableOnInteraction: false
